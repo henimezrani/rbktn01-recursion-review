@@ -11,28 +11,25 @@ var getElementsByClassName = function(className, element, arr
 
 	if (arguments[1] === undefined) {
 		element = document.body;
+		if(element.classList.contains(className)) {
+			arr.push(element);
+		}
 	}
 
 	if (element.childNodes.length === 0) {
 		return arr;
 	}
+
 	if (element.nodeType === 1) {
 		for (var i = 0; i < element.childNodes.length; i++) {
-			console.log(element.childNodes)
 			if (element.childNodes[i].nodeType === 1) {
-				console.log("Parent Node is " + element)
-				
-				console.log("Child Node is ")
-				console.log(element.childNodes[i])
-				console.log("Class List is " + element.childNodes[i].classList)
-
-				if(element.childNodes[i].classList.includes(className)) {
-					console.log("hi");
+				if(element.childNodes[i].classList.contains(className)) {
 					arr.push(element.childNodes[i]);
 				}
 				getElementsByClassName(className, element.childNodes[i], arr)
 			}
 		}
 	}
+	return arr;
 	
 };
