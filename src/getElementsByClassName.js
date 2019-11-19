@@ -31,5 +31,4 @@ var getElementsByClassName = function(className, element, arr
 		}
 	}
 	return arr;
-	
 };
